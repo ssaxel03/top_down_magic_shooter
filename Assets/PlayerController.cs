@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Shooter shooter;
     [SerializeField] private Camera camera;
+    [SerializeField] private MagicController magicController;
 
     private Vector2 moveDirection;
     private Vector2 mousePosition;
@@ -20,7 +21,10 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-            shooter.Fire();
+            if(magicController.GetFireMana() > 0){
+                shooter.Fire();
+                magicController.AddMana(-1);
+            }            
         }
 
         moveDirection = new Vector2(moveX, moveY).normalized;

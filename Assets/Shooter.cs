@@ -6,7 +6,7 @@ public class Shooter : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float fireForce = 20f;
+    [SerializeField] private float fireForce;
 
     public void Fire()
     {
